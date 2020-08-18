@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.input-wrapper input{
+    padding: 10px 20px;
+    border: 1px solid #b2bec3;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.input-wrapper{
+    margin-bottom: 15px;
+}
+
+.btn{
+    padding: 15px 35px;
+    background-color:#3742fa;
+    color: #ecf0f1;
+    border-radius: 6px;
+    border: 0px;
+    outline: none;
+    font-size: 16px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+    margin-top: 3px;
+    font-size: 15px;
+}

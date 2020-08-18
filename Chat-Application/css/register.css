@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap');
+.register-container{
+    height: 100vh;
+    background-image: url(../image/117772092_2925610190993967_7322240748640119353_o.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.register-container #register-container{
+    height: 100vh;
+    background-color: #fff;
+    width: 30%;
+    padding: 40px 25px;
+}
+
+.register-container .register-header{
+    font-size: 30px;
+    color: #636e72;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 21px;
+}
+
+.name-wrapper, .form-action{
+    display: flex;
+    justify-content: space-between;
+}
