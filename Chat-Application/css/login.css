@@ -1,0 +1,22 @@
+.login-container{
+    height: 100vh;
+    background-image: url(../image/117445513_2925610227660630_2601144072236250834_o.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-container #login-form{
+    height: 100vh;
+    background-color: #fff;
+    width: 30%;
+    padding: 40px 25px;
+}
+
+.login-container .login-header{
+    font-size: 30px;
+    color: #636e72;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 21px;
+}
