@@ -36,5 +36,14 @@ view.setActiveScreen = (screenName) => {
                 view.setActiveScreen('registerPage')
             })
         break;
+        case 'chatPage':
+            document.getElementById('app').innerHTML = components.chatPage
+            document.getElementById('header').innerHTML =
+             `Welcome ${firebase.auth().currentUser.displayName}`
+        break;
     }
+}
+
+view.setErrorMessage = (elementID, content) => {
+    document.getElementById(elementID).innerText = content
 }

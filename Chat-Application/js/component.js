@@ -55,3 +55,8 @@ components.loginPage =
             </div>
         </form>
     </div>`
+
+components.chatPage = 
+    `<div class="chat-container">
+        <h1 class="chat-header" id="header"></h1>
+    </div>`

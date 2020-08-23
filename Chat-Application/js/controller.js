@@ -7,26 +7,16 @@ controller.register = ((data)=> {
         document.getElementById('first-name-error').innerText = ''
     }
 
+    // sử dụng hàm setErrorMessage và toán tử 3 ngôi để validate
     // Check error for last name
-    if(data.lastName === ''){
-        document.getElementById('last-name-error').innerText = 'Please input your last name!'
-    }else{
-        document.getElementById('last-name-error').innerText = ''
-    }
+    view.setErrorMessage('last-name-error', data.lastName === '' ? 'Please input your last name' : '')
 
     // Check error for email
-    if(data.email === ''){
-        document.getElementById('email-error').innerText = 'Please input your email!'
-    }else{
-        document.getElementById('email-error').innerText = ''
-    }
+    view.setErrorMessage('email-error', data.email === '' ? 'Please input your email!' : '')
 
     // Check error for password
-    if(data.password === ''){
-        document.getElementById('password-error').innerText = 'Please input your password!'
-    }else{
-        document.getElementById('password-error').innerText = ''   
-    }
+    view.setErrorMessage('password-error', data.password === '' ? 'Please input your password!' : '')
+
 
     // Check error for confirm password
     if(data.confirmPassword === ''){
@@ -36,20 +26,24 @@ controller.register = ((data)=> {
     }else{
         document.getElementById('confirm-password-error').innerText = ''
     }
+
+    if(data.firstName !== '' 
+    && data.lastName !== ''
+    && data.email !== ''
+    && data.password !== ''
+    && data.password === data.confirmPassword){
+        model.register(data)
+    }
 })
 
 controller.login = ((data) => {
     // Check error for email
-    if(data.email === ''){
-        document.getElementById('email-error').innerText = 'Please input your email!'
-    }else{
-        document.getElementById('email-error').innerText = ''
-    }
+    view.setErrorMessage('email-error', data.email === '' ? 'Please input your email!' : '')
     
     // Check error for password
-    if(data.password === ''){
-        document.getElementById('password-error').innerText = 'Please input your password!'
-    }else{
-        document.getElementById('password-error').innerText = ''   
+    view.setErrorMessage('password-error', data.password === '' ? 'Please input your password!' : '')
+    
+    if(data.email !== '' && data.password !== ''){
+        model.login(data)
     }
 })
