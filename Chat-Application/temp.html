@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./css/register.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/chat.css">
+
+    <script src="https://kit.fontawesome.com/d22d9dd2e6.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
@@ -62,7 +65,42 @@
     </div> -->
 
     <div class="chat-container">
-        <h1 class="chat-header"></h1>
+        <div class="header">
+            MindX chat
+        </div>
+        <div class="main">
+            <div class="conversation-detail">
+                <div class="conversation-title">First conversation</div>
+                <div class="list-message">
+                    <div class="message mine">
+                        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque non
+                            maiores libero alias eligendi iusto asperiores eius impedit rem, velit est. Totam vel culpa
+                            ex fuga dolorem consequatur, enim autem?</div>
+                    </div>
+                    <div class="message mine">
+                        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque non
+                            maiores libero alias eligendi iusto asperiores eius impedit rem, velit est. Totam vel culpa
+                            ex fuga dolorem consequatur, enim autem?</div>
+                    </div>
+                    <div class="message their">
+                        <div class="owner">abc@gmail.com</div>
+                        <div class="content">Hello MindX</div>
+                    </div>
+                    <div class="message their">
+                        <div class="owner">abc@gmail.com</div>
+                        <div class="content">Hello MindX</div>
+                    </div>
+                </div>
+                <form id="send-message-form">
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="Type of message" name="message">
+
+                        </input>
+                    </div>
+                    <button type="submit"><i type="submit" class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 

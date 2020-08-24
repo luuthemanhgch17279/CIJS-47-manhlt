@@ -38,12 +38,46 @@ view.setActiveScreen = (screenName) => {
         break;
         case 'chatPage':
             document.getElementById('app').innerHTML = components.chatPage
-            document.getElementById('header').innerHTML =
-             `Welcome ${firebase.auth().currentUser.displayName}`
+            const sendMessageForm = document.getElementById('send-message-form')
+            sendMessageForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+                console.log(sendMessageForm.message.value)
+                const message = {
+                    content: sendMessageForm.message.value,
+                    owner: model.currentUser.email
+                }
+
+                const messageFormBot = {
+                    content: sendMessageForm.message.value,
+                    owner: 'Bot'
+                }
+                view.addMessage(message)
+                view.addMessage(messageFormBot)
+            })
         break;
     }
 }
 
 view.setErrorMessage = (elementID, content) => {
     document.getElementById(elementID).innerText = content
+}
+
+view.addMessage = (message) => {
+    const messageWrapper = document.createElement('div')
+    messageWrapper.classList.add('message')
+    if (message.owner === model.currentUser.email) {
+        messageWrapper.classList.add('mine')
+        messageWrapper.innerHTML = `
+        <div class="content">${message.content}</div>
+        `
+    }else{
+        messageWrapper.classList.add('their')
+        messageWrapper.innerHTML = `
+        <div class="owner">${message.owner}</div>
+        <div class="content">${message.content}</div>
+        `   
+    }
+    console.log(messageWrapper)
+    document.querySelector('.list-message').appendChild(messageWrapper)
+    
 }
