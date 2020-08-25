@@ -46,13 +46,19 @@ view.setActiveScreen = (screenName) => {
                     content: sendMessageForm.message.value,
                     owner: model.currentUser.email
                 }
-
                 const messageFormBot = {
                     content: sendMessageForm.message.value,
                     owner: 'Bot'
                 }
-                view.addMessage(message)
-                view.addMessage(messageFormBot)
+                //check empty message
+                if(sendMessageForm.message.value === ''){
+                    console.log("Empty message");
+                }else{
+                    view.addMessage(message)
+                    view.addMessage(messageFormBot)
+                }
+                //after click submit button, input form = null
+                sendMessageForm.message.value = ''
             })
         break;
     }
@@ -67,9 +73,8 @@ view.addMessage = (message) => {
     messageWrapper.classList.add('message')
     if (message.owner === model.currentUser.email) {
         messageWrapper.classList.add('mine')
-        messageWrapper.innerHTML = `
-        <div class="content">${message.content}</div>
-        `
+        messageWrapper.innerHTML = 
+        `<div class="content">${message.content}</div>`
     }else{
         messageWrapper.classList.add('their')
         messageWrapper.innerHTML = `
@@ -79,5 +84,4 @@ view.addMessage = (message) => {
     }
     console.log(messageWrapper)
     document.querySelector('.list-message').appendChild(messageWrapper)
-    
 }

@@ -69,7 +69,7 @@ components.chatPage =
                     <div class="input-wrapper">
                         <input type="text" placeholder="Type of message" name="message"></input>
                     </div>
-                    <button type="submit"><i type="submit" class="fas fa-paper-plane"></i></button>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
