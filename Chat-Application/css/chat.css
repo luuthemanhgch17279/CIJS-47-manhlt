@@ -7,9 +7,8 @@
     line-height: 64px;
     letter-spacing: 15px;
     text-transform: uppercase;
-    position: fixed;
-    top: 0;
     width: 100%;
+    font-weight: 700;
 }
 .chat-container .conversation-title{
     height: 64px;
@@ -18,12 +17,12 @@
     text-align: center;
     line-height: 64px;
     border-bottom: 1px solid #dbdbdb;
+    font-weight: 700;
 }
 .chat-container{
     height: 100vh;
 }
 .chat-container .main{
-    margin-top: 64px;
     height: calc(100vh - 64px);
 }
 .chat-container .main .conversation-detail{
@@ -45,7 +44,7 @@
     top: 20px;
     right: 30px;
     border: 0px;
-    background: none;
+    background: white;
     outline: none;
 }
 #send-message-form .input-wrapper{
@@ -60,6 +59,8 @@
     border-radius: 4px;
     max-width: 45%;
     margin-bottom: 10px;
+    font-size: 1.1rem;
+    word-wrap: break-word;
 }
 .list-message .message.mine{
     display: flex;
