@@ -32,34 +32,42 @@
 }
 .conversation-detail .list-message{
     flex-grow: 1;
+    overflow-y: auto;
 }
 .chat-container #send-message-form{
     position: relative;
 }
 #send-message-form button{
-    color: blue;
+    color: #2e86de;
     cursor: pointer;
     font-size: 20px;
     position: absolute;
     top: 20px;
     right: 30px;
     border: 0px;
-    background: white;
+    background: none;
     outline: none;
 }
 #send-message-form .input-wrapper{
     margin: 0px;
 }
 #send-message-form .input-wrapper input{
-    padding: 22px 20px;
+    padding:20px;
+    width: 98%;
+    outline: none;
+    border: none;
+}
+
+#send-message-form {
+    border: 1px solid #dbdbdb;
 }
 .list-message .message .content{
     width: max-content;
-    padding: 4px 8px;
+    padding: 10px 10px;
     border-radius: 4px;
     max-width: 45%;
     margin-bottom: 10px;
-    font-size: 1.1rem;
+    font-size: 1em;
     word-wrap: break-word;
 }
 .list-message .message.mine{

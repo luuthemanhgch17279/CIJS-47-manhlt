@@ -1,7 +1,7 @@
-const view = {} 
+const view = {}
 view.setActiveScreen = (screenName) => {
-    switch (screenName){
-        case 'registerPage' :
+    switch (screenName) {
+        case 'registerPage':
             document.getElementById('app').innerHTML = components.registerPage
             const registerForm = document.getElementById("register-container")
             registerForm.addEventListener('submit', (e) => {
@@ -19,8 +19,8 @@ view.setActiveScreen = (screenName) => {
             redirectLoginPage.addEventListener('click', () => {
                 view.setActiveScreen('loginPage')
             })
-        break;
-        case 'loginPage' :
+            break;
+        case 'loginPage':
             document.getElementById('app').innerHTML = components.loginPage
             const loginForm = document.getElementById("login-form")
             loginForm.addEventListener('submit', (e) => {
@@ -35,7 +35,7 @@ view.setActiveScreen = (screenName) => {
             redirectRegisterPage.addEventListener('click', () => {
                 view.setActiveScreen('registerPage')
             })
-        break;
+            break;
         case 'chatPage':
             document.getElementById('app').innerHTML = components.chatPage
             const sendMessageForm = document.getElementById('send-message-form')
@@ -44,23 +44,20 @@ view.setActiveScreen = (screenName) => {
                 console.log(sendMessageForm.message.value)
                 const message = {
                     content: sendMessageForm.message.value,
-                    owner: model.currentUser.email
-                }
-                const messageFormBot = {
-                    content: sendMessageForm.message.value,
-                    owner: 'Bot'
+                    owner: model.currentUser.email,
+                    createdAt: new Date().toISOString()
                 }
                 //check empty message
-                if(sendMessageForm.message.value === ''){
+                if (sendMessageForm.message.value.trim() === '') {
                     console.log("Empty message");
-                }else{
-                    view.addMessage(message)
-                    view.addMessage(messageFormBot)
+                } else {
+                    model.addMessage(message)
+                    sendMessageForm.message.value = ''
                 }
-                //after click submit button, input form = null
-                sendMessageForm.message.value = ''
             })
-        break;
+            model.getConversations()
+            model.listenConversationChange()
+            break;
     }
 }
 
@@ -73,15 +70,27 @@ view.addMessage = (message) => {
     messageWrapper.classList.add('message')
     if (message.owner === model.currentUser.email) {
         messageWrapper.classList.add('mine')
-        messageWrapper.innerHTML = 
-        `<div class="content">${message.content}</div>`
-    }else{
+        messageWrapper.innerHTML =
+            `<div class="content">${message.content}</div>`
+    } else {
         messageWrapper.classList.add('their')
         messageWrapper.innerHTML = `
         <div class="owner">${message.owner}</div>
         <div class="content">${message.content}</div>
-        `   
+        `
     }
     console.log(messageWrapper)
     document.querySelector('.list-message').appendChild(messageWrapper)
+}
+
+view.showCurrentConversation = () => {
+    for (let message of model.currentConversation.messages) {
+        view.addMessage(message)
+    }
+    view.scrollToEndElement()
+}
+
+view.scrollToEndElement = () => {
+    const element = document.querySelector('.list-message')
+    element.scrollTop = element.scrollHeight
 }

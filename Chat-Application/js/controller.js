@@ -47,3 +47,18 @@ controller.login = ((data) => {
         model.login(data)
     }
 })
+
+controller.showMessage = async () => {
+    const conversationID = "iuj9mBaBVrssYRkLlg3V"
+    const response = await firebase.firestore().collection('conversations').doc(conversationID).get()
+    const getDocument = getOneDocument(response)
+    // get title from firebase and change conversation title
+    const conversationTitle = getDocument.title
+    document.querySelector('.conversation-title').innerText = conversationTitle
+
+    // get message from firebase and print 
+    const messageContent = getDocument.messages
+    for(const item of messageContent){
+        view.addMessage(item)
+    }
+}
