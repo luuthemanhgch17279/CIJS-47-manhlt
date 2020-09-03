@@ -1,6 +1,6 @@
 const components = {}
 
-components.registerPage = 
+components.registerPage =
     `<div class="register-container">
         <form id="register-container">
             <div class="register-header">MindX Chat</div>
@@ -56,12 +56,20 @@ components.loginPage =
         </form>
     </div>`
 
-components.chatPage = 
-    `<div class="chat-container">
+components.chatPage =
+    ` <div class="chat-container">
         <div class="header">
             MindX chat
         </div>
         <div class="main">
+            <div class="aside-left">
+                <div class="create-conversation">
+                    <button class="btn cursor-pointer" id="create-conversation">+ New conversation</button>
+                </div>
+                <div class="list-conversations">
+                </div>
+            </div>
+
             <div class="conversation-detail">
                 <div class="conversation-title">First conversation</div>
                 <div class="list-message"></div>
@@ -75,4 +83,3 @@ components.chatPage =
         </div>
     </div>`
 
-    

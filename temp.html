@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/chat.css">
+    <link rel="stylesheet" href="./css/newConversation.css">
 
     <script src="https://kit.fontawesome.com/d22d9dd2e6.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -64,43 +65,23 @@
         </form>
     </div> -->
 
-    <div class="chat-container">
+    <div class="create-conversation-wrapper">
         <div class="header">
             MindX chat
         </div>
-        <div class="main">
-            <div class="conversation-detail">
-                <div class="conversation-title">First conversation</div>
-                <div class="list-message">
-                    <div class="message mine">
-                        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque non
-                            maiores libero alias eligendi iusto asperiores eius impedit rem, velit est. Totam vel culpa
-                            ex fuga dolorem consequatur, enim autem?</div>
-                    </div>
-                    <div class="message mine">
-                        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque non
-                            maiores libero alias eligendi iusto asperiores eius impedit rem, velit est. Totam vel culpa
-                            ex fuga dolorem consequatur, enim autem?</div>
-                    </div>
-                    <div class="message their">
-                        <div class="owner">abc@gmail.com</div>
-                        <div class="content">Hello MindX</div>
-                    </div>
-                    <div class="message their">
-                        <div class="owner">abc@gmail.com</div>
-                        <div class="content">Hello MindX</div>
-                    </div>
-                </div>
-                <form id="send-message-form">
-                    <div class="input-wrapper">
-                        <input type="text" placeholder="Type of message" name="message">
-
-                        </input>
-                    </div>
-                    <button type="submit"><i type="submit" class="fas fa-paper-plane"></i></button>
-                </form>
+        <form id="create-conversation-form">
+            <h4>Create a new conversation</h4>
+            <div class="input-wrapper">
+                <input type="text"  placeholder="Conversation title" name="title">
+                <div class="error" id="create-conversation-title-error"></div>
             </div>
-        </div>
+            <div class="input-wrapper">
+                <input type="email"  placeholder="Friend name" name="email">
+                <div class="error" id="create-conversation-email-error"></div>
+            </div>
+            <button class="btn cursor-pointer">Save</button>
+            <button class="btn cursor-pointer btn-bg-light" type="button" id="redirect-to-chat">Cancel</button>
+        </form>
     </div>
 </body>
 

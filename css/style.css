@@ -5,6 +5,19 @@
     font-family: sans-serif;
 }
 
+.header{
+    height: 64px;
+    background-color: #2e86de;
+    font-size: 25px;
+    color: whitesmoke;
+    text-align: center;
+    line-height: 64px;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: 700;
+}
+
 .input-wrapper input{
     padding: 10px 20px;
     border: 1px solid #b2bec3;
@@ -34,4 +47,8 @@
     color: red;
     margin-top: 3px;
     font-size: 15px;
+}
+.btn-bg-light{
+    background: #dbdbdb;
+    color: black;
 }

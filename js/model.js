@@ -45,6 +45,7 @@ model.getConversations = async () => {
     if (model.conversations.length > 0) {
         model.currentConversation = model.conversations[0]
         view.showCurrentConversation()
+        view.showConversations()
     }
 }
 
@@ -64,12 +65,17 @@ model.listenConversationChange = () => {
             return
         }
         console.log(snapshot.docChanges())
-        for (oneChange of snapshot.docChanges()) {
+        for (let oneChange of snapshot.docChanges()) {
             const docData = getOneDocument(oneChange.doc)
             if (docData.id === model.currentConversation.id) {
                 model.currentConversation = docData
                 view.addMessage(model.currentConversation.messages[model.currentConversation.messages.length - 1])
                 view.scrollToEndElement()
+            }
+            for(let i = 0; i < model.conversations.length; i++){
+                if(model.conversations[i].id === docData.id){
+                    model.conversations[i] = docData
+                }
             }
         }
     })

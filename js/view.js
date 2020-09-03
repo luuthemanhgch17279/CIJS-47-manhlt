@@ -84,6 +84,8 @@ view.addMessage = (message) => {
 }
 
 view.showCurrentConversation = () => {
+    document.querySelector('.conversation-title').innerHTML = model.currentConversation.title
+    document.querySelector('.list-message').innerHTML = ''
     for (let message of model.currentConversation.messages) {
         view.addMessage(message)
     }
@@ -93,4 +95,28 @@ view.showCurrentConversation = () => {
 view.scrollToEndElement = () => {
     const element = document.querySelector('.list-message')
     element.scrollTop = element.scrollHeight
+}
+
+view.showConversations = () => {
+    for (let conversation of model.conversations) {
+        view.addConversation(conversation)
+    }
+}
+view.addConversation = (conversation) => {
+    const conversationWrapper = document.createElement('div')
+    conversationWrapper.classList.add('conversation')
+    if(conversation.id === model.currentConversation.id){
+        conversationWrapper.classList.add('current')
+    }
+    conversationWrapper.innerHTML = 
+       `<div class="left-conversation-title">${conversation.title}</div>
+        <div class="num-of-user">${conversation.users.length} users </div>`
+    
+    conversationWrapper.addEventListener('click', () => {
+        model.currentConversation = model.conversations.filter(item => item.id === conversation.id)[0]
+        view.showCurrentConversation()
+        document.querySelector('.conversation.current').classList.remove('current')
+        conversationWrapper.classList.add('current')
+    })
+    document.querySelector('.list-conversations').appendChild(conversationWrapper)
 }
