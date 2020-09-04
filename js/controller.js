@@ -62,3 +62,26 @@ controller.showMessage = async () => {
         view.addMessage(item)
     }
 }
+
+controller.newConversation = ({title, email}) => {
+    if(title.trim() === '') {
+      view.setErrorMessage('create-conversation-title-error', 'Please input conversation name')
+    } else {
+      view.setErrorMessage('create-conversation-title-error', '')
+    }
+
+    if(email.trim() === '') {
+      view.setErrorMessage('create-conversation-email-error','Please input friend email')
+    } else {
+      view.setErrorMessage('create-conversation-email-error', '')
+    }
+    if(title.trim() !== '' && email.trim() !== '') {
+      const data = {
+        createdAt: (new Date()).toISOString(),
+        messages: [],
+        title: title,
+        users: [email, model.currentUser.email]
+      }
+      model.newConversation(data)
+    }
+  }

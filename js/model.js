@@ -80,3 +80,8 @@ model.listenConversationChange = () => {
         }
     })
 }
+
+model.newConversation = (data) => {
+    firebase.firestore().collection('conversations').add(data)
+    view.setActiveScreen('chatPage')
+}

@@ -20,6 +20,7 @@ view.setActiveScreen = (screenName) => {
                 view.setActiveScreen('loginPage')
             })
             break;
+
         case 'loginPage':
             document.getElementById('app').innerHTML = components.loginPage
             const loginForm = document.getElementById("login-form")
@@ -36,6 +37,7 @@ view.setActiveScreen = (screenName) => {
                 view.setActiveScreen('registerPage')
             })
             break;
+
         case 'chatPage':
             document.getElementById('app').innerHTML = components.chatPage
             const sendMessageForm = document.getElementById('send-message-form')
@@ -57,7 +59,29 @@ view.setActiveScreen = (screenName) => {
             })
             model.getConversations()
             model.listenConversationChange()
+
+            const redirectCreateConversation = document.getElementById('create-conversation')
+            redirectCreateConversation.addEventListener('click', () => {
+                view.setActiveScreen('ConversationPage')
+            })
             break;
+
+        case 'ConversationPage':
+            document.getElementById('app').innerHTML = components.ConversationPage
+            const redirectChatPage = document.getElementById('redirect-to-chat')
+            redirectChatPage.addEventListener('click', () => {
+                view.setActiveScreen('chatPage')
+            })
+            const newConversation =  document.getElementById('create-conversation-form')
+            newConversation.addEventListener('submit', (e) => {
+                e.preventDefault()
+                const data = {
+                    title: newConversation.title.value,
+                    email: newConversation.email.value
+                }
+                controller.newConversation(data)
+            })  
+            break; 
     }
 }
 
