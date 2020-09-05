@@ -28,8 +28,6 @@ window.onload = () => {
         view.setActiveScreen('loginPage')
       }
     })
-
-    // templateFirestore()
 }
 
 const getOneDocument = (response) => {

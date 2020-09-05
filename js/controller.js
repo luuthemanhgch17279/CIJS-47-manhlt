@@ -64,17 +64,11 @@ controller.showMessage = async () => {
 }
 
 controller.newConversation = ({title, email}) => {
-    if(title.trim() === '') {
-      view.setErrorMessage('create-conversation-title-error', 'Please input conversation name')
-    } else {
-      view.setErrorMessage('create-conversation-title-error', '')
-    }
-
-    if(email.trim() === '') {
-      view.setErrorMessage('create-conversation-email-error','Please input friend email')
-    } else {
-      view.setErrorMessage('create-conversation-email-error', '')
-    }
+    // check error for title conversation
+    view.setErrorMessage('create-conversation-title-error', title.trim() === '' ? 'Please input conversation name' : '')
+    // check error for email friend
+    view.setErrorMessage('create-conversation-email-error', email.trim() === '' ? 'Please input friend email' : '')
+    
     if(title.trim() !== '' && email.trim() !== '') {
       const data = {
         createdAt: (new Date()).toISOString(),
