@@ -19,9 +19,10 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 85%;
 }
-.conversation-detail .list-message{
+.chat-container .main .conversation-detail .list-message{
     flex-grow: 1;
     overflow-y: auto;
 }
@@ -43,7 +44,7 @@
     margin: 0px;
 }
 #send-message-form .input-wrapper input{
-    padding:20px;
+    padding: 20px;
     width: 98%;
     outline: none;
     border: none;
@@ -60,7 +61,7 @@
     max-width: 45%;
     margin-bottom: 10px;
     font-size: 1em;
-    word-wrap: break-all;
+    word-wrap: break-word;
 }
 .list-message .message.mine{
     display: flex;
