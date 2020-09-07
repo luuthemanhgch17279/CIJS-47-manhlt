@@ -52,3 +52,7 @@
     background: #dbdbdb;
     color: black;
 }
+
+.mt-1{
+    margin-top: 1rem !important;
+}

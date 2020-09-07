@@ -70,12 +70,15 @@ controller.newConversation = ({title, email}) => {
     view.setErrorMessage('create-conversation-email-error', email.trim() === '' ? 'Please input friend email' : '')
     
     if(title.trim() !== '' && email.trim() !== '') {
-      const data = {
-        createdAt: (new Date()).toISOString(),
-        messages: [],
-        title: title,
-        users: [email, model.currentUser.email]
-      }
-      model.newConversation(data)
+      model.newConversation({title, email})
     }
   }
+
+controller.addUsers = ({email}) => {
+    //check error for email
+    if(email.trim() === ''){
+        view.setErrorMessage('error-email', 'Please input friend email')
+    }else{
+        model.addNewUser({email})
+    }
+}

@@ -1,5 +1,5 @@
 const view = {}
-view.setActiveScreen = (screenName) => {
+view.setActiveScreen = (screenName, fromCreateConversation = false) => {
     switch (screenName) {
         case 'registerPage':
             document.getElementById('app').innerHTML = components.registerPage
@@ -57,20 +57,33 @@ view.setActiveScreen = (screenName) => {
                     sendMessageForm.message.value = ''
                 }
             })
-            model.getConversations()
-            model.listenConversationChange()
-
             const redirectCreateConversation = document.getElementById('create-conversation')
             redirectCreateConversation.addEventListener('click', () => {
                 view.setActiveScreen('ConversationPage')
             })
-            break;
 
+            const addNewUserForm = document.getElementById('add-user-form')
+            addNewUserForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+                const data = {
+                    email: addNewUserForm.email.value,
+                }
+                controller.addUsers(data)
+            })
+
+            if (fromCreateConversation === true) {
+                view.showCurrentConversation()
+                view.showConversations()
+            } else{
+                model.getConversations()
+                model.listenConversationChange()
+            }
+            break;
         case 'ConversationPage':
             document.getElementById('app').innerHTML = components.ConversationPage
             const redirectChatPage = document.getElementById('redirect-to-chat')
             redirectChatPage.addEventListener('click', () => {
-                view.setActiveScreen('chatPage')
+                view.setActiveScreen('chatPage', true)
             })
             const newConversation =  document.getElementById('create-conversation-form')
             newConversation.addEventListener('submit', (e) => {
@@ -113,6 +126,10 @@ view.showCurrentConversation = () => {
     for (let message of model.currentConversation.messages) {
         view.addMessage(message)
     }
+    document.querySelector('.list-users').innerHTML = ''
+    for(let user of model.currentConversation.users){
+        view.addUser(user)
+    }
     view.scrollToEndElement()
 }
 
@@ -126,7 +143,7 @@ view.showConversations = () => {
         view.addConversation(conversation)
     }
 }
-view.addConversation = (conversation) => {
+view.addConversation = (conversation) => {  
     const conversationWrapper = document.createElement('div')
     conversationWrapper.classList.add('conversation')
     if(conversation.id === model.currentConversation.id){
@@ -135,12 +152,18 @@ view.addConversation = (conversation) => {
     conversationWrapper.innerHTML = 
        `<div class="left-conversation-title">${conversation.title}</div>
         <div class="num-of-user">${conversation.users.length} users </div>`
-    
     conversationWrapper.addEventListener('click', () => {
         model.currentConversation = model.conversations.filter(item => item.id === conversation.id)[0]
         view.showCurrentConversation()
         document.querySelector('.conversation.current').classList.remove('current')
         conversationWrapper.classList.add('current')
     })
-    document.querySelector('.list-conversations').appendChild(conversationWrapper)
+    document.querySelector('.list-conversations').appendChild(conversationWrapper)   
+}
+
+view.addUser = (user) => {
+    const userWrapper = document.createElement('div')
+    userWrapper.classList.add('user-email')
+    userWrapper.innerHTML = user
+    document.querySelector('.list-users').appendChild(userWrapper)
 }

@@ -80,6 +80,17 @@ components.chatPage =
                     <button type="submit"><i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
+
+            <div class="aside-right">
+                <div class="list-users"></div>
+                <form class="mt-1" id="add-user-form">
+                    <div class="input-wrapper">
+                        <input type="email" name='email' placeholder="Enter friend email">
+                        <div class="error" id="error-email"></div>
+                    </div>
+                    <button class="btn cursor-pointer">Add</button>
+                </form>
+            </div>
         </div>
     </div>`
 
